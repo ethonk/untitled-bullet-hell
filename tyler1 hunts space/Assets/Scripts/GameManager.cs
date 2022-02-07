@@ -5,13 +5,15 @@ using BulletHell.Events;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] VoidEvent keypress_space;
+    [SerializeField] VoidEvent gameStartEvent;
+    bool gameStarted;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !gameStarted)
         {
-            keypress_space.Raise();
+            gameStarted = true;
+            gameStartEvent.Raise();
         }
     }
 }
